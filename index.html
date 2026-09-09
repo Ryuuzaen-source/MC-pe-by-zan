@@ -1,134 +1,143 @@
-<!doctype html>
+DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZANN MCPE — Mods & Addons Minecraft Bedrock</title>
-<meta name="description" content="Zann MCPE — download mod, addon, map, skin dan resource pack Minecraft Bedrock.">
-<style>
-:root{--bg:#03050d;--panel:#080d1b;--line:#26315a;--purple:#8b5cf6;--cyan:#22d3ee;--muted:#9ca3af}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#312e8160,transparent 35%),var(--bg);color:#f8fafc;font-family:Inter,Arial,sans-serif}
-a{color:inherit;text-decoration:none}.container{width:min(1180px,92%);margin:auto}
-header{position:sticky;top:0;z-index:20;background:#03050de8;backdrop-filter:blur(15px);border-bottom:1px solid #1e2947}
-nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-weight:1000;font-size:22px;letter-spacing:1px}.logo i{color:#a78bfa;font-style:normal}.logo small{display:block;font-size:8px;color:#7dd3fc;letter-spacing:3px}
-.links{display:flex;gap:20px;font-size:14px;color:#cbd5e1}.links a:hover{color:#c084fc}
-.searchtop{border:1px solid #344064;background:#0b1020;color:white;border-radius:20px;padding:10px 15px;width:230px}
-.hero{min-height:520px;padding:70px 0;display:flex;align-items:center;background-image:linear-gradient(90deg,#03050df2 0%,#03050dbb 45%,#03050d22 100%),url("assets/hero.png");background-size:cover;background-position:center}
-.hero h1{font-size:clamp(44px,7vw,78px);line-height:.95;margin:18px 0 12px;text-transform:uppercase;font-style:italic;text-shadow:0 0 30px #8b5cf688}
-.hero h1 span{color:#c084fc}.hero h2{margin:0;font-size:23px;letter-spacing:2px}.hero p{max-width:570px;color:#cbd5e1;line-height:1.7}
-.badge{display:inline-block;padding:8px 12px;border:1px solid #7c3aed;border-radius:999px;background:#581c8730;color:#c4b5fd;font-size:12px;font-weight:800}
-.stats{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}.stat{padding:11px 14px;border:1px solid #293457;background:#070b17d9;border-radius:12px;font-size:12px}
-.btn{display:inline-block;padding:13px 19px;border-radius:11px;font-weight:900;background:linear-gradient(90deg,#7c3aed,#4f46e5);box-shadow:0 0 28px #7c3aed55}
-section{padding:45px 0}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}.title h2{margin:0;font-size:28px}.title p{color:var(--muted);margin:4px 0 0;font-size:13px}
-.filter{width:100%;padding:15px;border-radius:12px;border:1px solid #283354;background:#070b16;color:white;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:linear-gradient(180deg,#0a1020,#060912);border:1px solid #26345b;border-radius:15px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-5px);border-color:#8b5cf6;box-shadow:0 15px 40px #0009}
-.thumb{height:150px;background:#101827;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.body{padding:14px}.tag{font-size:10px;padding:5px 8px;border-radius:7px;background:#5b21b655;color:#ddd6fe;font-weight:900}.card h3{font-size:17px;margin:12px 0 7px}.card p{color:#9ca3af;font-size:12px;line-height:1.5;min-height:37px;margin:0}
-.meta{display:flex;justify-content:space-between;color:#64748b;font-size:11px;margin:14px 0}.download{display:block;text-align:center;background:#4f46e5;padding:10px;border-radius:9px;font-weight:900;font-size:13px}.download:hover{background:#7c3aed}
-.how{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{padding:22px;border:1px solid #26345b;background:#080d1a;border-radius:15px}.step b{color:#a78bfa}.step p{color:#9ca3af;line-height:1.6;font-size:13px}
-footer{border-top:1px solid #1e2947;padding:30px 0;color:#64748b;font-size:12px}
-@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}.links{display:none}}@media(max-width:560px){.grid{grid-template-columns:1fr}.searchtop{display:none}.hero{min-height:500px}.how{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zann MCPE — Minecraft Bedrock Mods</title>
+  <meta name="description" content="Zann MCPE - katalog mod dan add-on Minecraft Bedrock.">
+  <style>
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#09090d;color:#f5f5f7}
+    a{text-decoration:none;color:inherit}.container{width:min(1100px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(9,9,13,.86);backdrop-filter:blur(12px);border-bottom:1px solid #24242d}
+    nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-size:23px;font-weight:900;letter-spacing:.5px}.logo span{color:#a855f7}
+    .navlinks{display:flex;gap:22px;color:#b9b9c5;font-size:14px}.navlinks a:hover{color:#fff}
+    .hero{padding:82px 0 55px;text-align:center;background:radial-gradient(circle at 50% 0,#5b21b655 0,transparent 48%)}
+    .badge{display:inline-block;padding:8px 13px;border:1px solid #6d28d9;border-radius:999px;color:#c084fc;background:#6d28d91c;font-size:13px}
+    h1{font-size:clamp(38px,8vw,76px);line-height:1;margin:18px 0 14px}
+    h1 span{color:#a855f7;text-shadow:0 0 28px #9333ea88}
+    .hero p{max-width:650px;margin:0 auto 28px;color:#a7a7b4;line-height:1.6}
+    .buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:13px 19px;border-radius:12px;font-weight:800;border:1px solid #30303b}
+    .primary{background:#9333ea;border-color:#a855f7;box-shadow:0 0 25px #9333ea44}.primary:hover{background:#a855f7}
+    .secondary{background:#15151c}.secondary:hover{background:#20202a}
+    section{padding:45px 0}.section-title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
+    .section-title h2{margin:0;font-size:28px}.section-title p{margin:0;color:#8e8e9b;font-size:14px}
+    .search{width:100%;padding:15px 17px;border:1px solid #292934;background:#111118;color:#fff;border-radius:12px;outline:none;margin-bottom:20px}
+    .search:focus{border-color:#9333ea}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#111118;border:1px solid #292934;border-radius:17px;overflow:hidden;transition:.2s}
+    .card:hover{transform:translateY(-4px);border-color:#7e22ce;box-shadow:0 12px 35px #0008}
+    .thumb{height:155px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#27104b,#101017)}
+    .card-body{padding:17px}.tag{display:inline-block;font-size:11px;color:#d8b4fe;background:#581c8744;padding:5px 8px;border-radius:7px}
+    .card h3{margin:12px 0 7px;font-size:19px}.card p{color:#91919e;font-size:13px;line-height:1.5;min-height:40px}
+    .meta{display:flex;justify-content:space-between;color:#777785;font-size:12px;margin:13px 0}
+    .download{display:block;text-align:center;background:#9333ea;padding:11px;border-radius:10px;font-weight:800}
+    .download:hover{background:#a855f7}
+    .empty{display:none;text-align:center;padding:30px;color:#888}
+    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{padding:22px;background:#111118;border:1px solid #292934;border-radius:15px}
+    .num{font-size:13px;color:#c084fc}.step h3{margin:8px 0}.step p{color:#92929e;font-size:13px;line-height:1.5}
+    footer{border-top:1px solid #24242d;padding:28px 0;color:#777785;font-size:13px;text-align:center}
+    @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.how{grid-template-columns:1fr}.navlinks{display:none}}
+    @media(max-width:520px){.grid{grid-template-columns:1fr}.hero{padding-top:60px}}
+  </style>
 </head>
 <body>
-<header><div class="container"><nav>
-<a class="logo" href="#">ZANN <i>MCPE</i><small>MODS • ADDONS • MAPS • SKINS</small></a>
-<div class="links"><a href="#">Beranda</a><a href="#mods">Mod</a><a href="#mods">Addon</a><a href="#cara">Tutorial</a><a href="#tentang">Tentang</a></div>
-<input class="searchtop" id="topSearch" placeholder="Cari mod...">
-</nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#">Zann <span>MCPE</span></a>
+      <div class="navlinks">
+        <a href="#mods">Mods</a><a href="#cara">Cara Download</a><a href="#tentang">Tentang</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
 <main>
-<section class="hero"><div class="container">
-<span class="badge">#1 WEBSITE DOWNLOAD MOD MINECRAFT BEDROCK</span>
-<h1>ZANN <span>MCPE</span></h1><h2>MOD & ADDON MINECRAFT BEDROCK</h2>
-<p>Temukan mod, addon, map, skin, dan resource pack terbaik untuk Minecraft Bedrock Edition. Cepat, rapi, dan nyaman digunakan di HP.</p>
-<div class="stats"><div class="stat">⚡ 100% Gratis</div><div class="stat">🛡️ Aman</div><div class="stat">↻ Update Rutin</div><div class="stat">▣ Support MCPE</div></div>
-<a class="btn" href="#mods">Jelajahi Mod →</a>
-</div></section>
+  <section class="hero">
+    <div class="container">
+      <div class="badge">🔥 Minecraft Bedrock Add-ons</div>
+      <h1>Zann <span>MCPE</span></h1>
+      <p>Temukan dan download mod/add-on Minecraft Bedrock favoritmu dengan tampilan cepat, sederhana, dan nyaman di HP.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#mods">Jelajahi Mod</a>
+        <a class="btn secondary" href="#cara">Cara Download</a>
+      </div>
+    </div>
+  </section>
 
-<section id="mods"><div class="container">
-<div class="title"><div><h2>MOD TERBARU</h2><p>Koleksi contoh siap kamu ganti dengan mod milikmu.</p></div></div>
-<input id="filter" class="filter" placeholder="🔎 Cari mod, addon, map, atau kategori...">
-<div class="grid" id="grid"><article class="card" data-search="ender dragon overhaul mod v1.21.50+">
-      <div class="thumb"><img src="assets/ender-dragon.svg" alt="Ender Dragon Overhaul"></div>
-      <div class="body">
-        <span class="tag">MOD</span><h3>Ender Dragon Overhaul</h3>
-        <p>Perubahan besar pada Ender Dragon.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>8.4 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Ender Dragon Overhaul')">⇩ Download</a>
+  <section id="mods">
+    <div class="container">
+      <div class="section-title">
+        <div><h2>Mod Terbaru</h2><p>Koleksi contoh — ganti dengan file milikmu.</p></div>
       </div>
-    </article><article class="card" data-search="modern vehicles addon v1.21.50+">
-      <div class="thumb"><img src="assets/modern-vehicles.svg" alt="Modern Vehicles"></div>
-      <div class="body">
-        <span class="tag">ADDON</span><h3>Modern Vehicles</h3>
-        <p>Tambahkan kendaraan modern ke dunia Minecraft.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>12.6 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Modern Vehicles')">⇩ Download</a>
-      </div>
-    </article><article class="card" data-search="skyblock infinity map v1.21.50+">
-      <div class="thumb"><img src="assets/skyblock.svg" alt="Skyblock Infinity"></div>
-      <div class="body">
-        <span class="tag">MAP</span><h3>Skyblock Infinity</h3>
-        <p>Skyblock dengan banyak pulau dan tantangan.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>10.2 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Skyblock Infinity')">⇩ Download</a>
-      </div>
-    </article><article class="card" data-search="more animals addon v1.21.50+">
-      <div class="thumb"><img src="assets/animals.svg" alt="More Animals"></div>
-      <div class="body">
-        <span class="tag">ADDON</span><h3>More Animals</h3>
-        <p>Tambahkan banyak hewan baru.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>6.8 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'More Animals')">⇩ Download</a>
-      </div>
-    </article><article class="card" data-search="magic expansion mod v1.21.50+">
-      <div class="thumb"><img src="assets/magic.svg" alt="Magic Expansion"></div>
-      <div class="body">
-        <span class="tag">MOD</span><h3>Magic Expansion</h3>
-        <p>Sihir, staf, dan kemampuan baru.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>9.7 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Magic Expansion')">⇩ Download</a>
-      </div>
-    </article><article class="card" data-search="zombies apocalypse addon v1.21.50+">
-      <div class="thumb"><img src="assets/zombies.svg" alt="Zombies Apocalypse"></div>
-      <div class="body">
-        <span class="tag">ADDON</span><h3>Zombies Apocalypse</h3>
-        <p>Hadapi serangan zombie yang lebih brutal.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>7.3 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Zombies Apocalypse')">⇩ Download</a>
-      </div>
-    </article><article class="card" data-search="realistic texture pack resource pack v1.21.50+">
-      <div class="thumb"><img src="assets/texture.svg" alt="Realistic Texture Pack"></div>
-      <div class="body">
-        <span class="tag">RESOURCE PACK</span><h3>Realistic Texture Pack</h3>
-        <p>Tekstur resolusi tinggi untuk dunia lebih nyata.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>32.8 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Realistic Texture Pack')">⇩ Download</a>
-      </div>
-    </article><article class="card" data-search="medieval castle map v1.21.50+">
-      <div class="thumb"><img src="assets/castle.svg" alt="Medieval Castle"></div>
-      <div class="body">
-        <span class="tag">MAP</span><h3>Medieval Castle</h3>
-        <p>Jelajahi kastel fantasi bergaya medieval.</p>
-        <div class="meta"><span>◈ v1.21.50+</span><span>14.5 MB</span></div>
-        <a class="download" href="#" onclick="demoDownload(event,'Medieval Castle')">⇩ Download</a>
-      </div>
-    </article></div>
-</div></section>
+      <input id="search" class="search" type="search" placeholder="🔎 Cari mod, misalnya: furniture...">
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty">Mod tidak ditemukan.</div>
+    </div>
+  </section>
 
-<section id="cara"><div class="container"><div class="title"><div><h2>CARA DOWNLOAD</h2><p>Import add-on Minecraft Bedrock dalam beberapa langkah.</p></div></div>
-<div class="how"><div class="step"><b>01 — PILIH</b><h3>Pilih mod</h3><p>Cari mod yang kamu inginkan lalu buka halaman download.</p></div>
-<div class="step"><b>02 — DOWNLOAD</b><h3>Unduh file</h3><p>Gunakan format .mcaddon, .mcpack, atau format lain yang sesuai.</p></div>
-<div class="step"><b>03 — IMPORT</b><h3>Buka dengan Minecraft</h3><p>Ketuk file dan pilih Minecraft Bedrock, kemudian aktifkan pack di world.</p></div></div>
-</div></section>
+  <section id="cara">
+    <div class="container">
+      <div class="section-title"><div><h2>Cara Download</h2><p>3 langkah sederhana.</p></div></div>
+      <div class="how">
+        <div class="step"><div class="num">01</div><h3>Pilih mod</h3><p>Cari add-on yang kamu inginkan lalu tekan tombol Download.</p></div>
+        <div class="step"><div class="num">02</div><h3>Download file</h3><p>File biasanya berformat .mcaddon atau .mcpack.</p></div>
+        <div class="step"><div class="num">03</div><h3>Import ke Minecraft</h3><p>Buka file dengan Minecraft Bedrock, lalu aktifkan add-on di world-mu.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="tentang"><div class="container"><div class="step"><b>ZANN MCPE</b><h2>Portal mod Minecraft Bedrock</h2><p>Template ini dibuat untuk katalog dan membagikan add-on. Pastikan file yang dibagikan adalah milikmu atau kamu memiliki izin untuk mendistribusikannya.</p></div></div></section>
+  <section id="tentang">
+    <div class="container">
+      <div class="section-title"><div><h2>Tentang Zann MCPE</h2><p>Website katalog mod Minecraft Bedrock.</p></div></div>
+      <div class="step"><p style="margin:0;color:#aaa;line-height:1.7">
+        Zann MCPE adalah template website untuk membagikan add-on Minecraft Bedrock.
+        Pastikan kamu hanya membagikan file yang kamu buat sendiri atau yang memang kamu punya izin untuk didistribusikan.
+      </p></div>
+    </div>
+  </section>
 </main>
-<footer><div class="container">© 2026 Zann MCPE • Minecraft adalah merek dagang Mojang Studios.</div></footer>
+
+<footer>© 2026 Zann MCPE • Minecraft adalah merek dagang Mojang Studios.</footer>
+
 <script>
-const filter=document.getElementById('filter'), top=document.getElementById('topSearch');
-function search(q){q=q.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.search.includes(q)?'block':'none')}
-filter.addEventListener('input',e=>search(e.target.value)); top.addEventListener('input',e=>{filter.value=e.target.value;search(e.target.value)})
-function demoDownload(e,name){e.preventDefault();alert('Tombol download "'+name+'" masih berupa demo. Ganti href="#" pada kartu mod dengan link file .mcpack/.mcaddon milikmu.');}
+const mods = [
+  {name:"Furniture Add-on",cat:"Furniture",ver:"1.21+",icon:"🛋️",desc:"Contoh add-on furniture untuk mempercantik rumah.",file:"#"},
+  {name:"Dragon Expansion",cat:"Adventure",ver:"1.21+",icon:"🐉",desc:"Contoh mod bertema naga dan petualangan.",file:"#"},
+  {name:"Lucky Block",cat:"Fun",ver:"1.21+",icon:"❓",desc:"Contoh add-on lucky block dengan kejutan acak.",file:"#"},
+  {name:"More Ores",cat:"Survival",ver:"1.20+",icon:"💎",desc:"Contoh add-on yang menambah variasi ore.",file:"#"},
+  {name:"Better Mobs",cat:"Mobs",ver:"1.21+",icon:"👾",desc:"Contoh add-on untuk pengalaman mob yang berbeda.",file:"#"},
+  {name:"Magic Weapons",cat:"Weapons",ver:"1.21+",icon:"⚔️",desc:"Contoh add-on senjata bertema fantasi.",file:"#"}
+];
+
+const grid=document.getElementById("grid"), search=document.getElementById("search"), empty=document.getElementById("empty");
+function render(q=""){
+  const list=mods.filter(m=>(m.name+" "+m.cat+" "+m.ver).toLowerCase().includes(q.toLowerCase()));
+  grid.innerHTML=list.map(m=>`
+    <article class="card">
+      <div class="thumb">${m.icon}</div>
+      <div class="card-body">
+        <span class="tag">${m.cat}</span>
+        <h3>${m.name}</h3>
+        <p>${m.desc}</p>
+        <div class="meta"><span>Minecraft ${m.ver}</span><span>MCPE</span></div>
+        <a class="download" href="${m.file}" onclick="return downloadNotice(event,'${m.name.replaceAll("'","")}')">⬇ Download</a>
+      </div>
+    </article>`).join("");
+  empty.style.display=list.length?"none":"block";
+}
+function downloadNotice(e,name){
+  if(e.currentTarget.getAttribute("href")==="#"){
+    e.preventDefault();
+    alert("Ini tombol contoh. Ganti file '#' di bagian data mod dengan link/file download milikmu.");
+    return false;
+  }
+  return true;
+}
+search.addEventListener("input",e=>render(e.target.value)); render();
 </script>
-</body></html>
+</body>
+</html>
