@@ -3,478 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070914">
-<meta name="description" content="ZANN MCPE - katalog Minecraft Bedrock Addon, Mod, Map, Texture, Skin dan Shader.">
-<title>ZANN MCPE — Mod & Addon Catalog</title>
-
+<meta name="theme-color" content="#060914">
+<title>ZANN MCPE 2.0 — Katalog</title>
 <style>
-:root{
-  --bg:#060812; --panel:#0d1120; --panel2:#11172a; --text:#eef3ff;
-  --muted:#8e9ab7; --cyan:#00e5ff; --purple:#9b5cff; --pink:#ff3cac;
-  --border:rgba(255,255,255,.09); --shadow:0 0 35px rgba(0,229,255,.08);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:
-  radial-gradient(circle at 15% 5%,rgba(155,92,255,.14),transparent 30%),
-  radial-gradient(circle at 90% 15%,rgba(0,229,255,.10),transparent 28%),var(--bg);
-  color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
-a{text-decoration:none;color:inherit}
-button,input,select{font:inherit}
-.container{width:min(1180px,92%);margin:auto}
-
-/* Header */
-header{
-  position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);
-  background:rgba(6,8,18,.78);border-bottom:1px solid var(--border)
-}
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{font-weight:900;letter-spacing:1px;font-size:21px}
-.logo span{color:var(--cyan);text-shadow:0 0 16px rgba(0,229,255,.65)}
-nav{display:flex;gap:18px;color:var(--muted);font-size:14px}
-nav a:hover{color:var(--cyan)}
-.nav-search{width:min(330px,38vw);display:flex}
-.nav-search input{width:100%}
-
-/* Common */
-.input,.select{
-  background:rgba(255,255,255,.045);border:1px solid var(--border);color:var(--text);
-  border-radius:12px;outline:none;padding:12px 14px;transition:.2s
-}
-.input:focus,.select:focus{border-color:rgba(0,229,255,.65);box-shadow:0 0 0 3px rgba(0,229,255,.08)}
-.select option{background:#101526;color:#fff}
-.btn{
-  border:0;border-radius:12px;padding:11px 16px;cursor:pointer;color:#fff;font-weight:800;
-  background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 8px 24px rgba(155,92,255,.18)
-}
-.btn:hover{transform:translateY(-1px)}
-.btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--border);box-shadow:none}
-.badge{display:inline-flex;padding:6px 9px;border-radius:999px;font-size:11px;font-weight:800;
-  background:rgba(0,229,255,.08);color:var(--cyan);border:1px solid rgba(0,229,255,.18)}
-
-/* Hero */
-.hero{padding:72px 0 42px;text-align:center}
-.hero h1{font-size:clamp(38px,7vw,76px);margin:0 0 12px;line-height:.98}
-.gradient{background:linear-gradient(90deg,var(--cyan),#fff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:700px;margin:0 auto 25px;color:var(--muted);line-height:1.7}
-.hero-search{max-width:720px;margin:auto;display:flex;gap:10px}
-.hero-search .input{flex:1;padding:15px 17px;font-size:16px}
-
-/* Stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 34px}
-.stat{padding:17px;border:1px solid var(--border);background:rgba(255,255,255,.025);border-radius:16px;text-align:center}
-.stat strong{display:block;font-size:25px}.stat span{color:var(--muted);font-size:12px}
-
-/* Catalog controls */
-.catalog-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
-.catalog-head h2{margin:0;font-size:27px}.catalog-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
-.controls{display:grid;grid-template-columns:1.7fr 1fr 1fr auto;gap:10px;margin-bottom:22px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.chip{padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:12px}
-.chip.active,.chip:hover{color:#fff;border-color:rgba(0,229,255,.45);background:rgba(0,229,255,.08)}
-
-/* Cards */
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.card{
-  overflow:hidden;border-radius:18px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
-  box-shadow:var(--shadow);transition:.2s;min-width:0
-}
-.card:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.35)}
-.thumb{aspect-ratio:16/10;background:linear-gradient(135deg,#151b34,#080b15);position:relative;overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .placeholder{width:100%;height:100%;display:grid;place-items:center;font-size:45px;opacity:.8}
-.type{position:absolute;left:10px;top:10px}
-.card-body{padding:14px}
-.card h3{font-size:15px;margin:0 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.desc{font-size:12px;line-height:1.5;color:var(--muted);height:36px;overflow:hidden}
-.meta{display:flex;justify-content:space-between;gap:8px;margin:12px 0;color:var(--muted);font-size:11px}
-.card .btn{width:100%;padding:10px;font-size:12px}
-
-/* Pagination */
-.pagination{display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;margin:32px 0 55px}
-.page-btn{min-width:39px;height:39px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.045);color:var(--text);cursor:pointer}
-.page-btn:hover,.page-btn.active{border-color:rgba(0,229,255,.5);background:rgba(0,229,255,.09);color:var(--cyan)}
-.page-btn:disabled{opacity:.35;cursor:not-allowed}
-.ellipsis{color:var(--muted);padding:0 4px}
-
-/* Other sections */
-.section{padding:35px 0}
-.info{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.panel{padding:24px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.025)}
-.panel h2{margin-top:0}.panel p,.panel li{color:var(--muted);line-height:1.7;font-size:14px}
-footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:12px;text-align:center}
-.empty{text-align:center;padding:60px 15px;color:var(--muted);grid-column:1/-1}
-.loading{text-align:center;padding:45px;color:var(--cyan);grid-column:1/-1}
-
-/* Mobile */
-@media(max-width:900px){
-  .grid{grid-template-columns:repeat(3,1fr)}
-  .controls{grid-template-columns:1fr 1fr}
-  .controls .wide{grid-column:1/-1}
-  nav{display:none}
-  .nav-search{width:45%}
-}
-@media(max-width:650px){
-  .nav{height:62px}.nav-search{display:none}
-  .hero{padding:48px 0 30px}
-  .hero-search{flex-direction:column}
-  .stats{grid-template-columns:1fr 1fr 1fr}
-  .stat strong{font-size:19px}
-  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .card-body{padding:11px}
-  .controls{grid-template-columns:1fr}
-  .controls .wide{grid-column:auto}
-  .info{grid-template-columns:1fr}
-}
+:root{--bg:#050712;--panel:#0b1020;--panel2:#10182b;--line:#20304f;--text:#eef5ff;--muted:#91a0bc;--cyan:#00e5ff;--purple:#9b5cff;--green:#35e58c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 15% 0%,#10294a 0,transparent 28%),radial-gradient(circle at 90% 10%,#28143d 0,transparent 30%),var(--bg);min-height:100vh}
+a{text-decoration:none;color:inherit}button,input,select{font:inherit}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#050712d9;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:950;font-size:22px;letter-spacing:1px}.logo b{color:var(--cyan)}nav{display:flex;gap:22px;color:var(--muted);font-size:14px}nav a:hover{color:#fff}
+.hero{text-align:center;padding:68px 0 42px}.badge{display:inline-block;padding:7px 12px;border:1px solid #294064;border-radius:999px;color:#b9c8df;background:#0b1324;font-size:12px}
+h1{font-size:clamp(40px,7vw,74px);line-height:1;margin:18px 0;letter-spacing:-3px}.gradient{background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));-webkit-background-clip:text;color:transparent}.hero p{max-width:700px;margin:0 auto;color:var(--muted);line-height:1.7}
+.search{max-width:780px;margin:25px auto 0;display:flex;gap:8px;padding:7px;background:#0b1020;border:1px solid #294064;border-radius:16px}.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:white;padding:13px;font-size:15px}.search button{border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,var(--cyan),#7565ff);font-weight:800;color:#041018}
+.toolbar{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:10px;margin-bottom:18px}.control{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:white;outline:0}.control:focus{border-color:var(--cyan)}
+.head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 14px}.head h2{margin:0;font-size:24px}.count{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#0e1628,#080d1a);transition:.2s}.card:hover{transform:translateY(-4px);border-color:#36598d}.thumb{height:150px;background:radial-gradient(circle,#18294d,#080d18);display:grid;place-items:center;position:relative}.thumb img{width:100%;height:100%;object-fit:cover}.emoji{font-size:48px}.tag{position:absolute;top:9px;left:9px;padding:5px 8px;border-radius:8px;background:#050914d9;border:1px solid #334a70;font-size:10px}
+.body{padding:13px}.body h3{margin:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.desc{color:var(--muted);font-size:12px;line-height:1.5;height:36px;overflow:hidden;margin:7px 0}.meta{display:flex;justify-content:space-between;color:#8795ad;font-size:11px;margin-bottom:11px}.download{display:block;text-align:center;padding:9px;border-radius:9px;background:linear-gradient(135deg,#00cfe8,#785dff);color:#031018;font-size:12px;font-weight:900}
+.empty{text-align:center;padding:55px 15px;color:var(--muted);border:1px dashed #304466;border-radius:15px;grid-column:1/-1}.pages{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin:28px 0 55px}.page{height:38px;min-width:38px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:#dce7fa;cursor:pointer}.page.active{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#041018;border:0;font-weight:900}.page:disabled{opacity:.3}
+.status{padding:10px 12px;border-radius:10px;background:#0b1324;color:var(--muted);font-size:12px;margin:12px 0}.status.ok{color:#8ef2bf}.status.err{color:#ff91a9}
+.info{margin:25px 0;padding:22px;border:1px solid var(--line);border-radius:16px;background:#0b1020aa;color:var(--muted);font-size:13px;line-height:1.7}.info strong{color:#fff}
+footer{border-top:1px solid var(--line);padding:35px 0;text-align:center;color:#64728b;font-size:12px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}.toolbar{grid-template-columns:1fr 1fr 1fr}.toolbar .wide{grid-column:1/-1}}
+@media(max-width:650px){nav{display:none}.hero{padding:48px 0 30px}h1{letter-spacing:-2px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.thumb{height:120px}.toolbar{grid-template-columns:1fr}.toolbar .wide{grid-column:auto}.head{align-items:flex-start;flex-direction:column}}
+@media(max-width:420px){.body{padding:10px}.desc{display:none}.card h3{font-size:13px}.search button{padding:11px 13px}}
 </style>
 </head>
-
 <body>
-<header>
-  <div class="container nav">
-    <a class="logo" href="#"><span>ZANN</span> MCPE</a>
-    <nav>
-      <a href="#catalog">Katalog</a>
-      <a href="#tutorial">Cara Download</a>
-      <a href="#about">Tentang</a>
-    </nav>
-    <div class="nav-search"><input id="topSearch" class="input" placeholder="Cari mod..."></div>
-  </div>
-</header>
+<header><div class="container nav">
+  <a class="logo" href="#">ZANN <b>MCPE</b> 2.0</a>
+  <nav><a href="#catalog">Katalog</a><a href="#about">Tentang</a></nav>
+</div></header>
 
-<main>
 <section class="hero">
-  <div class="container">
-    <div class="badge">MINECRAFT BEDROCK • CATALOG SYSTEM</div>
-    <h1><span class="gradient">ZANN MCPE</span></h1>
-    <p>Temukan Addon, Mod, Map, Texture, Skin dan Shader Minecraft Bedrock dengan sistem katalog besar yang ringan dan cepat.</p>
-    <div class="hero-search">
-      <input id="heroSearch" class="input" placeholder="Cari nama mod, kategori, versi Minecraft...">
-      <button class="btn" id="searchBtn">🔎 Cari</button>
-    </div>
+<div class="container">
+  <span class="badge">⚡ SUPABASE API CONNECTED</span>
+  <h1>ZANN <span class="gradient">MCPE</span></h1>
+  <p>Katalog Minecraft Bedrock dengan pencarian, filter, pengurutan, dan pagination langsung dari database.</p>
+  <div class="search">
+    <input id="heroSearch" type="search" placeholder="🔎 Cari mod, addon, map, texture...">
+    <button onclick="doSearch()">Cari</button>
   </div>
+</div>
 </section>
 
-<section class="container">
-  <div class="stats">
-    <div class="stat"><strong id="totalCount">0</strong><span>Total katalog</span></div>
-    <div class="stat"><strong id="shownCount">0</strong><span>Hasil ditemukan</span></div>
-    <div class="stat"><strong id="pageInfo">1</strong><span>Halaman aktif</span></div>
-  </div>
-</section>
-
-<section class="container" id="catalog">
-  <div class="catalog-head">
-    <div>
-      <h2>🔥 Katalog Minecraft</h2>
-      <p id="resultText">Memuat katalog...</p>
-    </div>
-  </div>
-
-  <div class="controls">
-    <input id="search" class="input wide" placeholder="Cari mod berdasarkan nama atau deskripsi...">
-    <select id="category" class="select">
-      <option value="all">Semua kategori</option>
-      <option value="Addon">Addon</option>
-      <option value="Mod">Mod</option>
-      <option value="Map">Map</option>
-      <option value="Texture">Texture</option>
-      <option value="Skin">Skin</option>
-      <option value="Shader">Shader</option>
+<section id="catalog" class="container">
+  <div class="toolbar">
+    <input id="search" class="control wide" placeholder="Cari nama atau deskripsi...">
+    <select id="category" class="control">
+      <option value="">Semua kategori</option><option>Addon</option><option>Mod</option><option>Map</option><option>Texture</option><option>Shader</option><option>Skin</option>
     </select>
-    <select id="version" class="select">
-      <option value="all">Semua versi</option>
-      <option value="1.21">1.21</option>
-      <option value="1.20">1.20</option>
-      <option value="1.19">1.19</option>
-      <option value="1.18">1.18</option>
+    <select id="version" class="control">
+      <option value="">Semua versi</option><option>1.21</option><option>1.20</option><option>1.19</option><option>1.18</option>
     </select>
-    <select id="sort" class="select">
-      <option value="popular">Terpopuler</option>
-      <option value="newest">Terbaru</option>
-      <option value="az">A → Z</option>
+    <select id="sort" class="control">
+      <option value="popular">Terpopuler</option><option value="newest">Terbaru</option><option value="az">A-Z</option>
     </select>
   </div>
 
-  <div class="chips" id="chips">
-    <button class="chip active" data-cat="all">Semua</button>
-    <button class="chip" data-cat="Addon">🧩 Addon</button>
-    <button class="chip" data-cat="Mod">⚙️ Mod</button>
-    <button class="chip" data-cat="Map">🗺️ Map</button>
-    <button class="chip" data-cat="Texture">🎨 Texture</button>
-    <button class="chip" data-cat="Skin">🧑 Skin</button>
-    <button class="chip" data-cat="Shader">✨ Shader</button>
-  </div>
-
+  <div id="status" class="status">Menghubungkan ke database...</div>
+  <div class="head"><h2>📦 Katalog Mod</h2><span id="count" class="count">-</span></div>
   <div id="grid" class="grid"></div>
-  <div id="pagination" class="pagination"></div>
-</section>
+  <div id="pages" class="pages"></div>
 
-<section class="section container" id="tutorial">
-  <div class="info">
-    <div class="panel">
-      <h2>📥 Cara Download</h2>
-      <ol>
-        <li>Cari mod yang kamu inginkan.</li>
-        <li>Pilih kategori dan versi Minecraft.</li>
-        <li>Tekan tombol <b>Download</b>.</li>
-        <li>Untuk versi produksi, arahkan tombol ke file <b>.mcpack</b>, <b>.mcaddon</b>, atau <b>.mcworld</b>.</li>
-      </ol>
-    </div>
-    <div class="panel" id="about">
-      <h2>🚀 Sistem Katalog Besar</h2>
-      <p>Halaman ini tidak memasukkan 1 juta kartu sekaligus. Data ditampilkan per halaman sehingga website tetap ringan. Untuk katalog nyata sampai jutaan item, hubungkan bagian DATA API di JavaScript ke database/API milikmu.</p>
-      <p><b>Penting:</b> hanya distribusikan file mod yang kamu miliki atau yang memang mengizinkan redistribusi.</p>
-    </div>
+  <div id="about" class="info">
+    <strong>🚀 ZANN MCPE Large Catalog</strong><br>
+    Website ini mengambil data dari tabel <b>public.mods</b> di Supabase. Pagination dilakukan di server
+    sehingga browser tidak perlu memuat seluruh katalog sekaligus. Cocok untuk katalog yang terus bertambah.
   </div>
 </section>
-</main>
 
-<footer>
-  © 2026 ZANN MCPE • Built for Minecraft Bedrock
-</footer>
+<footer>© 2026 ZANN MCPE 2.0</footer>
 
 <script>
-/*
-=========================================================
- ZANN MCPE — LARGE CATALOG ENGINE
-=========================================================
+// =============================================
+// ZANN MCPE — SUPABASE CONFIG
+// Publishable key aman digunakan di frontend
+// karena tabel memakai Row Level Security.
+// JANGAN pernah menaruh Secret/Service Role key.
+// =============================================
+const SUPABASE_URL = "https://sebfhiojbwqefzhupgxa.supabase.co";
+const SUPABASE_KEY = "sb_publishable_N9dcOzFhqqsr4CuoAhRCoQ_y1JIbaC9";
 
-Untuk katalog nyata:
-1. Buat file mods.json / API.
-2. Format setiap item:
-{
-  "id":"dragon-overhaul",
-  "name":"Ender Dragon Overhaul",
-  "category":"Addon",
-  "version":"1.21",
-  "description":"Dragon baru dengan kemampuan...",
-  "downloads":12500,
-  "date":"2026-09-01",
-  "image":"dragon.jpg",
-  "download":"https://contoh.com/file.mcaddon"
-}
-
-3. Ganti DATA_URL di bawah dengan URL JSON/API milikmu.
-
-Contoh:
-const DATA_URL = "./mods.json";
-
-Untuk 1 juta+ data, gunakan API/database dan pagination
-di server, jangan mengirim 1 juta data ke browser sekaligus.
-=========================================================
-*/
-
-const DATA_URL = ""; // contoh: "./mods.json" atau "https://domain-api-kamu.com/mods"
-
-const DEMO_MODS = [
-  ["Ender Dragon Overhaul","Addon","1.21","Boss dragon dengan kemampuan baru.","🐉",12500,"2026-09-01"],
-  ["Modern Vehicles","Mod","1.21","Mobil dan kendaraan modern untuk dunia MCPE.","🚗",10800,"2026-08-29"],
-  ["Skyblock Infinity","Map","1.21","Pulau skyblock dengan sistem quest.","☁️",9400,"2026-08-27"],
-  ["More Animals","Addon","1.20","Tambahkan banyak hewan baru.","🦁",8700,"2026-08-25"],
-  ["Magic Expansion","Addon","1.21","Senjata, spell dan sistem sihir.","🔮",8200,"2026-08-23"],
-  ["Zombies Apocalypse","Mod","1.20","Survival zombie apocalypse.","🧟",7900,"2026-08-20"],
-  ["Realistic Texture","Texture","1.21","Texture detail untuk Bedrock.","🎨",7300,"2026-08-18"],
-  ["Medieval Castle","Map","1.19","Kastil medieval siap dimainkan.","🏰",6900,"2026-08-15"],
-  ["Galaxy Shader","Shader","1.21","Langit malam bergaya galaksi.","🌌",6500,"2026-08-12"],
-  ["Ninja Combat","Mod","1.20","Combat dengan senjata dan skill ninja.","🥷",6100,"2026-08-10"],
-  ["Cute Animals","Addon","1.19","Hewan lucu untuk dunia survival.","🐼",5700,"2026-08-07"],
-  ["Cyber City","Map","1.21","Kota futuristik dengan neon.","🌃",5400,"2026-08-04"]
-].map((x,i)=>({
-  id:"demo-"+(i+1),name:x[0],category:x[1],version:x[2],description:x[3],
-  emoji:x[4],downloads:x[5],date:x[6],image:"",download:"#"
-}));
-
-let mods = [];
-let filtered = [];
-let currentPage = 1;
-const PER_PAGE = 12;
+const PER_PAGE = 24;
+let page = 1;
 
 const $ = id => document.getElementById(id);
-const searchInput = $("search");
-const heroSearch = $("heroSearch");
-const topSearch = $("topSearch");
 
-function normalize(item){
-  return {
-    id:item.id ?? crypto.randomUUID?.() ?? String(Math.random()),
-    name:item.name ?? "Untitled Mod",
-    category:item.category ?? "Addon",
-    version:String(item.version ?? "1.21"),
-    description:item.description ?? "Minecraft Bedrock content.",
-    emoji:item.emoji ?? "🧩",
-    downloads:Number(item.downloads ?? 0),
-    date:item.date ?? "2026-01-01",
-    image:item.image ?? "",
-    download:item.download ?? "#"
-  };
+function esc(v){
+  return String(v ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[c]));
 }
 
-async function loadCatalog(){
-  $("grid").innerHTML='<div class="loading">⚡ Memuat katalog...</div>';
-  if(!DATA_URL){
-    mods = DEMO_MODS.map(normalize);
-    render();
-    return;
+function debounce(fn, ms){
+  let t;
+  return (...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms)};
+}
+
+function doSearch(){
+  $("search").value = $("heroSearch").value;
+  page = 1;
+  loadMods();
+}
+
+function buildQuery(){
+  const params = new URLSearchParams();
+  params.set("select","id,name,category,minecraft_version,description,image_url,download_url,downloads,rating,created_at");
+
+  const q = $("search").value.trim();
+  const cat = $("category").value;
+  const ver = $("version").value;
+  const sort = $("sort").value;
+
+  params.set("published","eq.true");
+
+  if(q){
+    // Search nama ATAU deskripsi.
+    params.set("or",`(name.ilike.*${q}*,description.ilike.*${q}*)`);
   }
+  if(cat) params.set("category",`eq.${cat}`);
+  if(ver) params.set("minecraft_version",`eq.${ver}`);
+
+  if(sort==="popular") params.set("order","downloads.desc");
+  if(sort==="newest") params.set("order","created_at.desc");
+  if(sort==="az") params.set("order","name.asc");
+
+  params.set("limit",String(PER_PAGE));
+  params.set("offset",String((page-1)*PER_PAGE));
+  return params;
+}
+
+async function loadMods(){
+  $("status").className="status";
+  $("status").textContent="⏳ Memuat katalog...";
+  $("grid").innerHTML="";
+
   try{
-    const res = await fetch(DATA_URL,{cache:"no-store"});
-    if(!res.ok) throw new Error("HTTP "+res.status);
+    const url = `${SUPABASE_URL}/rest/v1/mods?${buildQuery().toString()}`;
+    const res = await fetch(url,{
+      method:"GET",
+      headers:{
+        "apikey":SUPABASE_KEY,
+        "Authorization":`Bearer ${SUPABASE_KEY}`,
+        "Prefer":"count=exact"
+      }
+    });
+
+    if(!res.ok){
+      const text = await res.text();
+      throw new Error(text || `HTTP ${res.status}`);
+    }
+
     const data = await res.json();
-    const list = Array.isArray(data) ? data : (data.mods || data.results || []);
-    mods = list.map(normalize);
-    render();
+
+    // Content-Range: 0-23/12345
+    const range = res.headers.get("Content-Range") || "";
+    const totalMatch = range.match(/\/(\d+)$/);
+    const total = totalMatch ? Number(totalMatch[1]) : data.length;
+    const totalPages = Math.max(1,Math.ceil(total/PER_PAGE));
+
+    if(page>totalPages){page=totalPages;return loadMods()}
+
+    $("status").className="status ok";
+    $("status").textContent=`✅ Terhubung • ${total.toLocaleString("id-ID")} mod di database`;
+
+    $("count").textContent=`${total.toLocaleString("id-ID")} hasil • halaman ${page}/${totalPages}`;
+
+    if(!data.length){
+      $("grid").innerHTML=`<div class="empty">😕 Tidak ada mod yang cocok.</div>`;
+    }else{
+      $("grid").innerHTML=data.map(card).join("");
+    }
+
+    renderPages(totalPages);
   }catch(err){
-    mods = DEMO_MODS.map(normalize);
-    $("resultText").textContent="API gagal dimuat — menampilkan katalog demo.";
-    render();
+    $("status").className="status err";
+    $("status").textContent="❌ Gagal menghubungkan API: "+err.message;
+    $("grid").innerHTML=`<div class="empty">Periksa URL/key Supabase, RLS tabel <b>mods</b>, dan koneksi internet.</div>`;
+    $("pages").innerHTML="";
   }
 }
 
-function getQuery(){
-  return searchInput.value.trim().toLowerCase();
-}
-
-function applyFilters(){
-  const q=getQuery();
-  const cat=$("category").value;
-  const ver=$("version").value;
-  const sort=$("sort").value;
-
-  filtered=mods.filter(m=>{
-    const text=(m.name+" "+m.description+" "+m.category+" "+m.version).toLowerCase();
-    const okQ=!q || text.includes(q);
-    const okCat=cat==="all" || m.category===cat;
-    const okVer=ver==="all" || m.version.includes(ver);
-    return okQ && okCat && okVer;
-  });
-
-  if(sort==="az") filtered.sort((a,b)=>a.name.localeCompare(b.name));
-  if(sort==="newest") filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
-  if(sort==="popular") filtered.sort((a,b)=>b.downloads-a.downloads);
-
-  const pages=Math.max(1,Math.ceil(filtered.length/PER_PAGE));
-  if(currentPage>pages) currentPage=pages;
-}
-
-function render(){
-  applyFilters();
-  const start=(currentPage-1)*PER_PAGE;
-  const pageItems=filtered.slice(start,start+PER_PAGE);
-
-  $("totalCount").textContent=mods.length.toLocaleString("id-ID");
-  $("shownCount").textContent=filtered.length.toLocaleString("id-ID");
-  $("pageInfo").textContent=currentPage;
-  $("resultText").textContent=filtered.length
-    ? `Menampilkan ${start+1}–${Math.min(start+PER_PAGE,filtered.length)} dari ${filtered.length.toLocaleString("id-ID")} hasil`
-    : "Tidak ada mod yang cocok.";
-
-  if(!pageItems.length){
-    $("grid").innerHTML='<div class="empty">😔<br><br>Mod tidak ditemukan.<br>Coba kata kunci atau filter lain.</div>';
-  }else{
-    $("grid").innerHTML=pageItems.map(cardHTML).join("");
-  }
-  renderPagination(Math.max(1,Math.ceil(filtered.length/PER_PAGE)));
-}
-
-function cardHTML(m){
-  const image=m.image
-    ? `<img loading="lazy" src="${escapeAttr(m.image)}" alt="${escapeAttr(m.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`
-    : "";
-  return `
-  <article class="card">
+function card(m){
+  const image = m.image_url ? `<img src="${esc(m.image_url)}" alt="${esc(m.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">` : "";
+  return `<article class="card">
     <div class="thumb">
       ${image}
-      <div class="placeholder" ${m.image?'style="display:none"':''}>${escapeHTML(m.emoji)}</div>
-      <span class="badge type">${escapeHTML(m.category)}</span>
+      <div class="emoji" style="${m.image_url?'display:none':''}">🧩</div>
+      <span class="tag">${esc(m.category)} • ${esc(m.minecraft_version)}</span>
     </div>
-    <div class="card-body">
-      <h3 title="${escapeAttr(m.name)}">${escapeHTML(m.name)}</h3>
-      <div class="desc">${escapeHTML(m.description)}</div>
-      <div class="meta"><span>🎮 ${escapeHTML(m.version)}</span><span>⬇️ ${formatDownloads(m.downloads)}</span></div>
-      <a class="btn" href="${escapeAttr(m.download)}" target="_blank" rel="noopener">⬇️ Download</a>
+    <div class="body">
+      <h3 title="${esc(m.name)}">${esc(m.name)}</h3>
+      <div class="desc">${esc(m.description)}</div>
+      <div class="meta">
+        <span>⬇ ${Number(m.downloads||0).toLocaleString("id-ID")}</span>
+        <span>⭐ ${Number(m.rating||0).toFixed(1)}</span>
+      </div>
+      ${m.download_url
+        ? `<a class="download" href="${esc(m.download_url)}" target="_blank" rel="noopener">⬇ DOWNLOAD</a>`
+        : `<span class="download" style="opacity:.45">DOWNLOAD BELUM TERSEDIA</span>`}
     </div>
   </article>`;
 }
 
-function renderPagination(totalPages){
-  const p=$("pagination");
-  if(totalPages<=1){p.innerHTML="";return}
-  let html=`<button class="page-btn" ${currentPage===1?'disabled':''} onclick="goPage(${currentPage-1})">‹</button>`;
-  const pages=[];
-  if(totalPages<=7){
-    for(let i=1;i<=totalPages;i++) pages.push(i);
-  }else{
-    pages.push(1);
-    if(currentPage>4) pages.push("...");
-    const from=Math.max(2,currentPage-1), to=Math.min(totalPages-1,currentPage+1);
-    for(let i=from;i<=to;i++) pages.push(i);
-    if(currentPage<totalPages-3) pages.push("...");
-    pages.push(totalPages);
+function renderPages(totalPages){
+  const p=page;
+  let html=`<button class="page" ${p<=1?"disabled":""} onclick="goPage(${p-1})">‹</button>`;
+
+  const nums=[];
+  for(let i=1;i<=totalPages;i++){
+    if(i===1 || i===totalPages || Math.abs(i-p)<=2) nums.push(i);
   }
-  pages.forEach(x=>{
-    html += x==="..." ? `<span class="ellipsis">…</span>` :
-      `<button class="page-btn ${x===currentPage?'active':''}" onclick="goPage(${x})">${x}</button>`;
+
+  let last=0;
+  nums.forEach(i=>{
+    if(last && i-last>1) html+=`<span style="color:#687894">…</span>`;
+    html+=`<button class="page ${i===p?"active":""}" onclick="goPage(${i})">${i}</button>`;
+    last=i;
   });
-  html+=`<button class="page-btn" ${currentPage===totalPages?'disabled':''} onclick="goPage(${currentPage+1})">›</button>`;
-  p.innerHTML=html;
+
+  html+=`<button class="page" ${p>=totalPages?"disabled":""} onclick="goPage(${p+1})">›</button>`;
+  $("pages").innerHTML=html;
 }
 
-function goPage(page){
-  const total=Math.max(1,Math.ceil(filtered.length/PER_PAGE));
-  currentPage=Math.max(1,Math.min(page,total));
-  render();
-  $("catalog").scrollIntoView({behavior:"smooth",block:"start"});
-}
-window.goPage=goPage;
-
-function setSearch(value){
-  searchInput.value=value;
-  heroSearch.value=value;
-  topSearch.value=value;
-  currentPage=1;
-  render();
+function goPage(n){
+  if(n<1)return;
+  page=n;
+  loadMods();
+  window.scrollTo({top:$("catalog").offsetTop-80,behavior:"smooth"});
 }
 
-let searchTimer;
-function onSearch(e){
-  clearTimeout(searchTimer);
-  searchTimer=setTimeout(()=>{searchInput.value=e.target.value;currentPage=1;render()},120);
-}
-searchInput.addEventListener("input",onSearch);
-heroSearch.addEventListener("input",onSearch);
-topSearch.addEventListener("input",onSearch);
+const delayedSearch=debounce(()=>{page=1;loadMods()},450);
 
-$("searchBtn").addEventListener("click",()=>{setSearch(heroSearch.value);$("catalog").scrollIntoView({behavior:"smooth"})});
-$("category").addEventListener("change",()=>{currentPage=1;syncChip();render()});
-$("version").addEventListener("change",()=>{currentPage=1;render()});
-$("sort").addEventListener("change",()=>{currentPage=1;render()});
-
-document.querySelectorAll(".chip").forEach(chip=>{
-  chip.addEventListener("click",()=>{
-    const cat=chip.dataset.cat;
-    $("category").value=cat;
-    document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
-    chip.classList.add("active");
-    currentPage=1;render();
-  });
+$("search").addEventListener("input",()=>{
+  $("heroSearch").value=$("search").value;
+  delayedSearch();
 });
-function syncChip(){
-  const cat=$("category").value;
-  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===cat));
-}
+$("heroSearch").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
+$("category").addEventListener("change",()=>{page=1;loadMods()});
+$("version").addEventListener("change",()=>{page=1;loadMods()});
+$("sort").addEventListener("change",()=>{page=1;loadMods()});
 
-function formatDownloads(n){
-  if(n>=1000000)return (n/1000000).toFixed(1)+"M";
-  if(n>=1000)return (n/1000).toFixed(1)+"K";
-  return n.toLocaleString("id-ID");
-}
-function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-function escapeAttr(v){return escapeHTML(v)}
-
-loadCatalog();
+loadMods();
 </script>
 </body>
 </html>
