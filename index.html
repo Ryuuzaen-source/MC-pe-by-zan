@@ -1,143 +1,480 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zann MCPE — Minecraft Bedrock Mods</title>
-  <meta name="description" content="Zann MCPE - katalog mod dan add-on Minecraft Bedrock.">
-  <style>
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#09090d;color:#f5f5f7}
-    a{text-decoration:none;color:inherit}.container{width:min(1100px,92%);margin:auto}
-    header{position:sticky;top:0;z-index:10;background:rgba(9,9,13,.86);backdrop-filter:blur(12px);border-bottom:1px solid #24242d}
-    nav{height:68px;display:flex;align-items:center;justify-content:space-between}
-    .logo{font-size:23px;font-weight:900;letter-spacing:.5px}.logo span{color:#a855f7}
-    .navlinks{display:flex;gap:22px;color:#b9b9c5;font-size:14px}.navlinks a:hover{color:#fff}
-    .hero{padding:82px 0 55px;text-align:center;background:radial-gradient(circle at 50% 0,#5b21b655 0,transparent 48%)}
-    .badge{display:inline-block;padding:8px 13px;border:1px solid #6d28d9;border-radius:999px;color:#c084fc;background:#6d28d91c;font-size:13px}
-    h1{font-size:clamp(38px,8vw,76px);line-height:1;margin:18px 0 14px}
-    h1 span{color:#a855f7;text-shadow:0 0 28px #9333ea88}
-    .hero p{max-width:650px;margin:0 auto 28px;color:#a7a7b4;line-height:1.6}
-    .buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:13px 19px;border-radius:12px;font-weight:800;border:1px solid #30303b}
-    .primary{background:#9333ea;border-color:#a855f7;box-shadow:0 0 25px #9333ea44}.primary:hover{background:#a855f7}
-    .secondary{background:#15151c}.secondary:hover{background:#20202a}
-    section{padding:45px 0}.section-title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
-    .section-title h2{margin:0;font-size:28px}.section-title p{margin:0;color:#8e8e9b;font-size:14px}
-    .search{width:100%;padding:15px 17px;border:1px solid #292934;background:#111118;color:#fff;border-radius:12px;outline:none;margin-bottom:20px}
-    .search:focus{border-color:#9333ea}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:#111118;border:1px solid #292934;border-radius:17px;overflow:hidden;transition:.2s}
-    .card:hover{transform:translateY(-4px);border-color:#7e22ce;box-shadow:0 12px 35px #0008}
-    .thumb{height:155px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#27104b,#101017)}
-    .card-body{padding:17px}.tag{display:inline-block;font-size:11px;color:#d8b4fe;background:#581c8744;padding:5px 8px;border-radius:7px}
-    .card h3{margin:12px 0 7px;font-size:19px}.card p{color:#91919e;font-size:13px;line-height:1.5;min-height:40px}
-    .meta{display:flex;justify-content:space-between;color:#777785;font-size:12px;margin:13px 0}
-    .download{display:block;text-align:center;background:#9333ea;padding:11px;border-radius:10px;font-weight:800}
-    .download:hover{background:#a855f7}
-    .empty{display:none;text-align:center;padding:30px;color:#888}
-    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{padding:22px;background:#111118;border:1px solid #292934;border-radius:15px}
-    .num{font-size:13px;color:#c084fc}.step h3{margin:8px 0}.step p{color:#92929e;font-size:13px;line-height:1.5}
-    footer{border-top:1px solid #24242d;padding:28px 0;color:#777785;font-size:13px;text-align:center}
-    @media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.how{grid-template-columns:1fr}.navlinks{display:none}}
-    @media(max-width:520px){.grid{grid-template-columns:1fr}.hero{padding-top:60px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070914">
+<meta name="description" content="ZANN MCPE - katalog Minecraft Bedrock Addon, Mod, Map, Texture, Skin dan Shader.">
+<title>ZANN MCPE — Mod & Addon Catalog</title>
+
+<style>
+:root{
+  --bg:#060812; --panel:#0d1120; --panel2:#11172a; --text:#eef3ff;
+  --muted:#8e9ab7; --cyan:#00e5ff; --purple:#9b5cff; --pink:#ff3cac;
+  --border:rgba(255,255,255,.09); --shadow:0 0 35px rgba(0,229,255,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(circle at 15% 5%,rgba(155,92,255,.14),transparent 30%),
+  radial-gradient(circle at 90% 15%,rgba(0,229,255,.10),transparent 28%),var(--bg);
+  color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);
+  background:rgba(6,8,18,.78);border-bottom:1px solid var(--border)
+}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:900;letter-spacing:1px;font-size:21px}
+.logo span{color:var(--cyan);text-shadow:0 0 16px rgba(0,229,255,.65)}
+nav{display:flex;gap:18px;color:var(--muted);font-size:14px}
+nav a:hover{color:var(--cyan)}
+.nav-search{width:min(330px,38vw);display:flex}
+.nav-search input{width:100%}
+
+/* Common */
+.input,.select{
+  background:rgba(255,255,255,.045);border:1px solid var(--border);color:var(--text);
+  border-radius:12px;outline:none;padding:12px 14px;transition:.2s
+}
+.input:focus,.select:focus{border-color:rgba(0,229,255,.65);box-shadow:0 0 0 3px rgba(0,229,255,.08)}
+.select option{background:#101526;color:#fff}
+.btn{
+  border:0;border-radius:12px;padding:11px 16px;cursor:pointer;color:#fff;font-weight:800;
+  background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 8px 24px rgba(155,92,255,.18)
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--border);box-shadow:none}
+.badge{display:inline-flex;padding:6px 9px;border-radius:999px;font-size:11px;font-weight:800;
+  background:rgba(0,229,255,.08);color:var(--cyan);border:1px solid rgba(0,229,255,.18)}
+
+/* Hero */
+.hero{padding:72px 0 42px;text-align:center}
+.hero h1{font-size:clamp(38px,7vw,76px);margin:0 0 12px;line-height:.98}
+.gradient{background:linear-gradient(90deg,var(--cyan),#fff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:700px;margin:0 auto 25px;color:var(--muted);line-height:1.7}
+.hero-search{max-width:720px;margin:auto;display:flex;gap:10px}
+.hero-search .input{flex:1;padding:15px 17px;font-size:16px}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 34px}
+.stat{padding:17px;border:1px solid var(--border);background:rgba(255,255,255,.025);border-radius:16px;text-align:center}
+.stat strong{display:block;font-size:25px}.stat span{color:var(--muted);font-size:12px}
+
+/* Catalog controls */
+.catalog-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
+.catalog-head h2{margin:0;font-size:27px}.catalog-head p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.controls{display:grid;grid-template-columns:1.7fr 1fr 1fr auto;gap:10px;margin-bottom:22px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:12px}
+.chip.active,.chip:hover{color:#fff;border-color:rgba(0,229,255,.45);background:rgba(0,229,255,.08)}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{
+  overflow:hidden;border-radius:18px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));
+  box-shadow:var(--shadow);transition:.2s;min-width:0
+}
+.card:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.35)}
+.thumb{aspect-ratio:16/10;background:linear-gradient(135deg,#151b34,#080b15);position:relative;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .placeholder{width:100%;height:100%;display:grid;place-items:center;font-size:45px;opacity:.8}
+.type{position:absolute;left:10px;top:10px}
+.card-body{padding:14px}
+.card h3{font-size:15px;margin:0 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.desc{font-size:12px;line-height:1.5;color:var(--muted);height:36px;overflow:hidden}
+.meta{display:flex;justify-content:space-between;gap:8px;margin:12px 0;color:var(--muted);font-size:11px}
+.card .btn{width:100%;padding:10px;font-size:12px}
+
+/* Pagination */
+.pagination{display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap;margin:32px 0 55px}
+.page-btn{min-width:39px;height:39px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.045);color:var(--text);cursor:pointer}
+.page-btn:hover,.page-btn.active{border-color:rgba(0,229,255,.5);background:rgba(0,229,255,.09);color:var(--cyan)}
+.page-btn:disabled{opacity:.35;cursor:not-allowed}
+.ellipsis{color:var(--muted);padding:0 4px}
+
+/* Other sections */
+.section{padding:35px 0}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{padding:24px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.025)}
+.panel h2{margin-top:0}.panel p,.panel li{color:var(--muted);line-height:1.7;font-size:14px}
+footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:12px;text-align:center}
+.empty{text-align:center;padding:60px 15px;color:var(--muted);grid-column:1/-1}
+.loading{text-align:center;padding:45px;color:var(--cyan);grid-column:1/-1}
+
+/* Mobile */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .controls{grid-template-columns:1fr 1fr}
+  .controls .wide{grid-column:1/-1}
+  nav{display:none}
+  .nav-search{width:45%}
+}
+@media(max-width:650px){
+  .nav{height:62px}.nav-search{display:none}
+  .hero{padding:48px 0 30px}
+  .hero-search{flex-direction:column}
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .stat strong{font-size:19px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card-body{padding:11px}
+  .controls{grid-template-columns:1fr}
+  .controls .wide{grid-column:auto}
+  .info{grid-template-columns:1fr}
+}
+</style>
 </head>
+
 <body>
 <header>
-  <div class="container">
+  <div class="container nav">
+    <a class="logo" href="#"><span>ZANN</span> MCPE</a>
     <nav>
-      <a class="logo" href="#">Zann <span>MCPE</span></a>
-      <div class="navlinks">
-        <a href="#mods">Mods</a><a href="#cara">Cara Download</a><a href="#tentang">Tentang</a>
-      </div>
+      <a href="#catalog">Katalog</a>
+      <a href="#tutorial">Cara Download</a>
+      <a href="#about">Tentang</a>
     </nav>
+    <div class="nav-search"><input id="topSearch" class="input" placeholder="Cari mod..."></div>
   </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="container">
-      <div class="badge">🔥 Minecraft Bedrock Add-ons</div>
-      <h1>Zann <span>MCPE</span></h1>
-      <p>Temukan dan download mod/add-on Minecraft Bedrock favoritmu dengan tampilan cepat, sederhana, dan nyaman di HP.</p>
-      <div class="buttons">
-        <a class="btn primary" href="#mods">Jelajahi Mod</a>
-        <a class="btn secondary" href="#cara">Cara Download</a>
-      </div>
+<section class="hero">
+  <div class="container">
+    <div class="badge">MINECRAFT BEDROCK • CATALOG SYSTEM</div>
+    <h1><span class="gradient">ZANN MCPE</span></h1>
+    <p>Temukan Addon, Mod, Map, Texture, Skin dan Shader Minecraft Bedrock dengan sistem katalog besar yang ringan dan cepat.</p>
+    <div class="hero-search">
+      <input id="heroSearch" class="input" placeholder="Cari nama mod, kategori, versi Minecraft...">
+      <button class="btn" id="searchBtn">🔎 Cari</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="mods">
-    <div class="container">
-      <div class="section-title">
-        <div><h2>Mod Terbaru</h2><p>Koleksi contoh — ganti dengan file milikmu.</p></div>
-      </div>
-      <input id="search" class="search" type="search" placeholder="🔎 Cari mod, misalnya: furniture...">
-      <div id="grid" class="grid"></div>
-      <div id="empty" class="empty">Mod tidak ditemukan.</div>
-    </div>
-  </section>
+<section class="container">
+  <div class="stats">
+    <div class="stat"><strong id="totalCount">0</strong><span>Total katalog</span></div>
+    <div class="stat"><strong id="shownCount">0</strong><span>Hasil ditemukan</span></div>
+    <div class="stat"><strong id="pageInfo">1</strong><span>Halaman aktif</span></div>
+  </div>
+</section>
 
-  <section id="cara">
-    <div class="container">
-      <div class="section-title"><div><h2>Cara Download</h2><p>3 langkah sederhana.</p></div></div>
-      <div class="how">
-        <div class="step"><div class="num">01</div><h3>Pilih mod</h3><p>Cari add-on yang kamu inginkan lalu tekan tombol Download.</p></div>
-        <div class="step"><div class="num">02</div><h3>Download file</h3><p>File biasanya berformat .mcaddon atau .mcpack.</p></div>
-        <div class="step"><div class="num">03</div><h3>Import ke Minecraft</h3><p>Buka file dengan Minecraft Bedrock, lalu aktifkan add-on di world-mu.</p></div>
-      </div>
+<section class="container" id="catalog">
+  <div class="catalog-head">
+    <div>
+      <h2>🔥 Katalog Minecraft</h2>
+      <p id="resultText">Memuat katalog...</p>
     </div>
-  </section>
+  </div>
 
-  <section id="tentang">
-    <div class="container">
-      <div class="section-title"><div><h2>Tentang Zann MCPE</h2><p>Website katalog mod Minecraft Bedrock.</p></div></div>
-      <div class="step"><p style="margin:0;color:#aaa;line-height:1.7">
-        Zann MCPE adalah template website untuk membagikan add-on Minecraft Bedrock.
-        Pastikan kamu hanya membagikan file yang kamu buat sendiri atau yang memang kamu punya izin untuk didistribusikan.
-      </p></div>
+  <div class="controls">
+    <input id="search" class="input wide" placeholder="Cari mod berdasarkan nama atau deskripsi...">
+    <select id="category" class="select">
+      <option value="all">Semua kategori</option>
+      <option value="Addon">Addon</option>
+      <option value="Mod">Mod</option>
+      <option value="Map">Map</option>
+      <option value="Texture">Texture</option>
+      <option value="Skin">Skin</option>
+      <option value="Shader">Shader</option>
+    </select>
+    <select id="version" class="select">
+      <option value="all">Semua versi</option>
+      <option value="1.21">1.21</option>
+      <option value="1.20">1.20</option>
+      <option value="1.19">1.19</option>
+      <option value="1.18">1.18</option>
+    </select>
+    <select id="sort" class="select">
+      <option value="popular">Terpopuler</option>
+      <option value="newest">Terbaru</option>
+      <option value="az">A → Z</option>
+    </select>
+  </div>
+
+  <div class="chips" id="chips">
+    <button class="chip active" data-cat="all">Semua</button>
+    <button class="chip" data-cat="Addon">🧩 Addon</button>
+    <button class="chip" data-cat="Mod">⚙️ Mod</button>
+    <button class="chip" data-cat="Map">🗺️ Map</button>
+    <button class="chip" data-cat="Texture">🎨 Texture</button>
+    <button class="chip" data-cat="Skin">🧑 Skin</button>
+    <button class="chip" data-cat="Shader">✨ Shader</button>
+  </div>
+
+  <div id="grid" class="grid"></div>
+  <div id="pagination" class="pagination"></div>
+</section>
+
+<section class="section container" id="tutorial">
+  <div class="info">
+    <div class="panel">
+      <h2>📥 Cara Download</h2>
+      <ol>
+        <li>Cari mod yang kamu inginkan.</li>
+        <li>Pilih kategori dan versi Minecraft.</li>
+        <li>Tekan tombol <b>Download</b>.</li>
+        <li>Untuk versi produksi, arahkan tombol ke file <b>.mcpack</b>, <b>.mcaddon</b>, atau <b>.mcworld</b>.</li>
+      </ol>
     </div>
-  </section>
+    <div class="panel" id="about">
+      <h2>🚀 Sistem Katalog Besar</h2>
+      <p>Halaman ini tidak memasukkan 1 juta kartu sekaligus. Data ditampilkan per halaman sehingga website tetap ringan. Untuk katalog nyata sampai jutaan item, hubungkan bagian DATA API di JavaScript ke database/API milikmu.</p>
+      <p><b>Penting:</b> hanya distribusikan file mod yang kamu miliki atau yang memang mengizinkan redistribusi.</p>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>© 2026 Zann MCPE • Minecraft adalah merek dagang Mojang Studios.</footer>
+<footer>
+  © 2026 ZANN MCPE • Built for Minecraft Bedrock
+</footer>
 
 <script>
-const mods = [
-  {name:"Furniture Add-on",cat:"Furniture",ver:"1.21+",icon:"🛋️",desc:"Contoh add-on furniture untuk mempercantik rumah.",file:"#"},
-  {name:"Dragon Expansion",cat:"Adventure",ver:"1.21+",icon:"🐉",desc:"Contoh mod bertema naga dan petualangan.",file:"#"},
-  {name:"Lucky Block",cat:"Fun",ver:"1.21+",icon:"❓",desc:"Contoh add-on lucky block dengan kejutan acak.",file:"#"},
-  {name:"More Ores",cat:"Survival",ver:"1.20+",icon:"💎",desc:"Contoh add-on yang menambah variasi ore.",file:"#"},
-  {name:"Better Mobs",cat:"Mobs",ver:"1.21+",icon:"👾",desc:"Contoh add-on untuk pengalaman mob yang berbeda.",file:"#"},
-  {name:"Magic Weapons",cat:"Weapons",ver:"1.21+",icon:"⚔️",desc:"Contoh add-on senjata bertema fantasi.",file:"#"}
-];
+/*
+=========================================================
+ ZANN MCPE — LARGE CATALOG ENGINE
+=========================================================
 
-const grid=document.getElementById("grid"), search=document.getElementById("search"), empty=document.getElementById("empty");
-function render(q=""){
-  const list=mods.filter(m=>(m.name+" "+m.cat+" "+m.ver).toLowerCase().includes(q.toLowerCase()));
-  grid.innerHTML=list.map(m=>`
-    <article class="card">
-      <div class="thumb">${m.icon}</div>
-      <div class="card-body">
-        <span class="tag">${m.cat}</span>
-        <h3>${m.name}</h3>
-        <p>${m.desc}</p>
-        <div class="meta"><span>Minecraft ${m.ver}</span><span>MCPE</span></div>
-        <a class="download" href="${m.file}" onclick="return downloadNotice(event,'${m.name.replaceAll("'","")}')">⬇ Download</a>
-      </div>
-    </article>`).join("");
-  empty.style.display=list.length?"none":"block";
+Untuk katalog nyata:
+1. Buat file mods.json / API.
+2. Format setiap item:
+{
+  "id":"dragon-overhaul",
+  "name":"Ender Dragon Overhaul",
+  "category":"Addon",
+  "version":"1.21",
+  "description":"Dragon baru dengan kemampuan...",
+  "downloads":12500,
+  "date":"2026-09-01",
+  "image":"dragon.jpg",
+  "download":"https://contoh.com/file.mcaddon"
 }
-function downloadNotice(e,name){
-  if(e.currentTarget.getAttribute("href")==="#"){
-    e.preventDefault();
-    alert("Ini tombol contoh. Ganti file '#' di bagian data mod dengan link/file download milikmu.");
-    return false;
+
+3. Ganti DATA_URL di bawah dengan URL JSON/API milikmu.
+
+Contoh:
+const DATA_URL = "./mods.json";
+
+Untuk 1 juta+ data, gunakan API/database dan pagination
+di server, jangan mengirim 1 juta data ke browser sekaligus.
+=========================================================
+*/
+
+const DATA_URL = ""; // contoh: "./mods.json" atau "https://domain-api-kamu.com/mods"
+
+const DEMO_MODS = [
+  ["Ender Dragon Overhaul","Addon","1.21","Boss dragon dengan kemampuan baru.","🐉",12500,"2026-09-01"],
+  ["Modern Vehicles","Mod","1.21","Mobil dan kendaraan modern untuk dunia MCPE.","🚗",10800,"2026-08-29"],
+  ["Skyblock Infinity","Map","1.21","Pulau skyblock dengan sistem quest.","☁️",9400,"2026-08-27"],
+  ["More Animals","Addon","1.20","Tambahkan banyak hewan baru.","🦁",8700,"2026-08-25"],
+  ["Magic Expansion","Addon","1.21","Senjata, spell dan sistem sihir.","🔮",8200,"2026-08-23"],
+  ["Zombies Apocalypse","Mod","1.20","Survival zombie apocalypse.","🧟",7900,"2026-08-20"],
+  ["Realistic Texture","Texture","1.21","Texture detail untuk Bedrock.","🎨",7300,"2026-08-18"],
+  ["Medieval Castle","Map","1.19","Kastil medieval siap dimainkan.","🏰",6900,"2026-08-15"],
+  ["Galaxy Shader","Shader","1.21","Langit malam bergaya galaksi.","🌌",6500,"2026-08-12"],
+  ["Ninja Combat","Mod","1.20","Combat dengan senjata dan skill ninja.","🥷",6100,"2026-08-10"],
+  ["Cute Animals","Addon","1.19","Hewan lucu untuk dunia survival.","🐼",5700,"2026-08-07"],
+  ["Cyber City","Map","1.21","Kota futuristik dengan neon.","🌃",5400,"2026-08-04"]
+].map((x,i)=>({
+  id:"demo-"+(i+1),name:x[0],category:x[1],version:x[2],description:x[3],
+  emoji:x[4],downloads:x[5],date:x[6],image:"",download:"#"
+}));
+
+let mods = [];
+let filtered = [];
+let currentPage = 1;
+const PER_PAGE = 12;
+
+const $ = id => document.getElementById(id);
+const searchInput = $("search");
+const heroSearch = $("heroSearch");
+const topSearch = $("topSearch");
+
+function normalize(item){
+  return {
+    id:item.id ?? crypto.randomUUID?.() ?? String(Math.random()),
+    name:item.name ?? "Untitled Mod",
+    category:item.category ?? "Addon",
+    version:String(item.version ?? "1.21"),
+    description:item.description ?? "Minecraft Bedrock content.",
+    emoji:item.emoji ?? "🧩",
+    downloads:Number(item.downloads ?? 0),
+    date:item.date ?? "2026-01-01",
+    image:item.image ?? "",
+    download:item.download ?? "#"
+  };
+}
+
+async function loadCatalog(){
+  $("grid").innerHTML='<div class="loading">⚡ Memuat katalog...</div>';
+  if(!DATA_URL){
+    mods = DEMO_MODS.map(normalize);
+    render();
+    return;
   }
-  return true;
+  try{
+    const res = await fetch(DATA_URL,{cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const data = await res.json();
+    const list = Array.isArray(data) ? data : (data.mods || data.results || []);
+    mods = list.map(normalize);
+    render();
+  }catch(err){
+    mods = DEMO_MODS.map(normalize);
+    $("resultText").textContent="API gagal dimuat — menampilkan katalog demo.";
+    render();
+  }
 }
-search.addEventListener("input",e=>render(e.target.value)); render();
+
+function getQuery(){
+  return searchInput.value.trim().toLowerCase();
+}
+
+function applyFilters(){
+  const q=getQuery();
+  const cat=$("category").value;
+  const ver=$("version").value;
+  const sort=$("sort").value;
+
+  filtered=mods.filter(m=>{
+    const text=(m.name+" "+m.description+" "+m.category+" "+m.version).toLowerCase();
+    const okQ=!q || text.includes(q);
+    const okCat=cat==="all" || m.category===cat;
+    const okVer=ver==="all" || m.version.includes(ver);
+    return okQ && okCat && okVer;
+  });
+
+  if(sort==="az") filtered.sort((a,b)=>a.name.localeCompare(b.name));
+  if(sort==="newest") filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(sort==="popular") filtered.sort((a,b)=>b.downloads-a.downloads);
+
+  const pages=Math.max(1,Math.ceil(filtered.length/PER_PAGE));
+  if(currentPage>pages) currentPage=pages;
+}
+
+function render(){
+  applyFilters();
+  const start=(currentPage-1)*PER_PAGE;
+  const pageItems=filtered.slice(start,start+PER_PAGE);
+
+  $("totalCount").textContent=mods.length.toLocaleString("id-ID");
+  $("shownCount").textContent=filtered.length.toLocaleString("id-ID");
+  $("pageInfo").textContent=currentPage;
+  $("resultText").textContent=filtered.length
+    ? `Menampilkan ${start+1}–${Math.min(start+PER_PAGE,filtered.length)} dari ${filtered.length.toLocaleString("id-ID")} hasil`
+    : "Tidak ada mod yang cocok.";
+
+  if(!pageItems.length){
+    $("grid").innerHTML='<div class="empty">😔<br><br>Mod tidak ditemukan.<br>Coba kata kunci atau filter lain.</div>';
+  }else{
+    $("grid").innerHTML=pageItems.map(cardHTML).join("");
+  }
+  renderPagination(Math.max(1,Math.ceil(filtered.length/PER_PAGE)));
+}
+
+function cardHTML(m){
+  const image=m.image
+    ? `<img loading="lazy" src="${escapeAttr(m.image)}" alt="${escapeAttr(m.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`
+    : "";
+  return `
+  <article class="card">
+    <div class="thumb">
+      ${image}
+      <div class="placeholder" ${m.image?'style="display:none"':''}>${escapeHTML(m.emoji)}</div>
+      <span class="badge type">${escapeHTML(m.category)}</span>
+    </div>
+    <div class="card-body">
+      <h3 title="${escapeAttr(m.name)}">${escapeHTML(m.name)}</h3>
+      <div class="desc">${escapeHTML(m.description)}</div>
+      <div class="meta"><span>🎮 ${escapeHTML(m.version)}</span><span>⬇️ ${formatDownloads(m.downloads)}</span></div>
+      <a class="btn" href="${escapeAttr(m.download)}" target="_blank" rel="noopener">⬇️ Download</a>
+    </div>
+  </article>`;
+}
+
+function renderPagination(totalPages){
+  const p=$("pagination");
+  if(totalPages<=1){p.innerHTML="";return}
+  let html=`<button class="page-btn" ${currentPage===1?'disabled':''} onclick="goPage(${currentPage-1})">‹</button>`;
+  const pages=[];
+  if(totalPages<=7){
+    for(let i=1;i<=totalPages;i++) pages.push(i);
+  }else{
+    pages.push(1);
+    if(currentPage>4) pages.push("...");
+    const from=Math.max(2,currentPage-1), to=Math.min(totalPages-1,currentPage+1);
+    for(let i=from;i<=to;i++) pages.push(i);
+    if(currentPage<totalPages-3) pages.push("...");
+    pages.push(totalPages);
+  }
+  pages.forEach(x=>{
+    html += x==="..." ? `<span class="ellipsis">…</span>` :
+      `<button class="page-btn ${x===currentPage?'active':''}" onclick="goPage(${x})">${x}</button>`;
+  });
+  html+=`<button class="page-btn" ${currentPage===totalPages?'disabled':''} onclick="goPage(${currentPage+1})">›</button>`;
+  p.innerHTML=html;
+}
+
+function goPage(page){
+  const total=Math.max(1,Math.ceil(filtered.length/PER_PAGE));
+  currentPage=Math.max(1,Math.min(page,total));
+  render();
+  $("catalog").scrollIntoView({behavior:"smooth",block:"start"});
+}
+window.goPage=goPage;
+
+function setSearch(value){
+  searchInput.value=value;
+  heroSearch.value=value;
+  topSearch.value=value;
+  currentPage=1;
+  render();
+}
+
+let searchTimer;
+function onSearch(e){
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(()=>{searchInput.value=e.target.value;currentPage=1;render()},120);
+}
+searchInput.addEventListener("input",onSearch);
+heroSearch.addEventListener("input",onSearch);
+topSearch.addEventListener("input",onSearch);
+
+$("searchBtn").addEventListener("click",()=>{setSearch(heroSearch.value);$("catalog").scrollIntoView({behavior:"smooth"})});
+$("category").addEventListener("change",()=>{currentPage=1;syncChip();render()});
+$("version").addEventListener("change",()=>{currentPage=1;render()});
+$("sort").addEventListener("change",()=>{currentPage=1;render()});
+
+document.querySelectorAll(".chip").forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    const cat=chip.dataset.cat;
+    $("category").value=cat;
+    document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+    chip.classList.add("active");
+    currentPage=1;render();
+  });
+});
+function syncChip(){
+  const cat=$("category").value;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.cat===cat));
+}
+
+function formatDownloads(n){
+  if(n>=1000000)return (n/1000000).toFixed(1)+"M";
+  if(n>=1000)return (n/1000).toFixed(1)+"K";
+  return n.toLocaleString("id-ID");
+}
+function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function escapeAttr(v){return escapeHTML(v)}
+
+loadCatalog();
 </script>
 </body>
 </html>
