@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#060914">
+<title>ZANN MCPE — Admin Panel</title>
+<style>
+:root{--bg:#050712;--panel:#0c1222;--panel2:#111a2e;--line:#263657;--text:#edf4ff;--muted:#91a0bc;--cyan:#00e5ff;--purple:#8d63ff;--red:#ff5577;--green:#35e58c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#10294a,transparent 28%),radial-gradient(circle at 90% 10%,#29123d,transparent 28%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{width:min(1100px,92%);margin:auto;padding:30px 0 60px}
+header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}.logo{font-size:22px;font-weight:950}.logo b{color:var(--cyan)}button{cursor:pointer;border:0}.btn{padding:10px 14px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--purple));font-weight:850;color:#031018}.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}.btn.danger{background:#32121d;color:#ff9db0;border:1px solid #6b2638}
+.panel{background:#0b1020dd;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px;box-shadow:0 10px 35px #0005}h1,h2{margin-top:0}.muted{color:var(--muted);font-size:13px}.status{padding:11px;border-radius:10px;background:#101a2d;color:var(--muted);margin:12px 0;font-size:13px}.ok{color:#8ef2bf}.err{color:#ff9aad}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-size:12px;color:#9eacc5;margin-bottom:5px}input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#080e1c;color:white;outline:0}textarea{min-height:90px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--cyan)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:10px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:750px}th,td{text-align:left;padding:12px;border-bottom:1px solid #1d2a43;font-size:12px}th{color:#9eacc5}td{color:#dfe8f7}.pill{display:inline-block;padding:4px 7px;border-radius:7px;font-size:10px;background:#14233b}.published{color:#8ef2bf}.hidden{color:#ff9aad}.rowbtn{padding:7px 9px;border-radius:7px;margin-right:4px;background:#142039;color:white;border:1px solid #293c5e}.rowbtn.del{color:#ff9aad}.login{max-width:480px;margin:8vh auto}.hiddenEl{display:none!important}
+@media(max-width:650px){.form{grid-template-columns:1fr}.full{grid-column:auto}.toolbar{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo">ZANN <b>MCPE</b> <span style="font-size:12px;color:#8d9ab4">ADMIN</span></div>
+  <button id="logout" class="btn secondary hiddenEl" onclick="logout()">Keluar</button>
+</header>
+
+<section id="loginPanel" class="panel login">
+  <h1>🔐 Admin Login</h1>
+  <p class="muted">Masuk menggunakan akun Supabase Auth yang kamu buat sebagai admin.</p>
+  <div class="status" id="loginStatus">Belum masuk.</div>
+  <div class="form">
+    <div class="full"><label>Email</label><input id="email" type="email" autocomplete="email"></div>
+    <div class="full"><label>Password</label><input id="password" type="password" autocomplete="current-password"></div>
+  </div>
+  <div class="actions"><button class="btn" onclick="login()">Masuk</button></div>
+</section>
+
+<main id="adminPanel" class="hiddenEl">
+<section class="panel">
+  <h1 id="formTitle">➕ Tambah Mod</h1>
+  <div id="status" class="status">Siap.</div>
+  <div class="form">
+    <div><label>Nama mod *</label><input id="name" placeholder="Contoh: Dragon Evolution"></div>
+    <div><label>Slug *</label><input id="slug" placeholder="dragon-evolution"></div>
+    <div><label>Kategori *</label><select id="category"><option>Addon</option><option>Mod</option><option>Map</option><option>Texture</option><option>Shader</option><option>Skin</option></select></div>
+    <div><label>Versi Minecraft *</label><input id="version" placeholder="1.21"></div>
+    <div class="full"><label>Deskripsi</label><textarea id="description" placeholder="Deskripsi mod..."></textarea></div>
+    <div><label>URL gambar</label><input id="image" type="url" placeholder="https://..."></div>
+    <div><label>URL download</label><input id="download" type="url" placeholder="https://..."></div>
+    <div><label>Jumlah download</label><input id="downloads" type="number" min="0" value="0"></div>
+    <div><label>Rating (0–5)</label><input id="rating" type="number" min="0" max="5" step="0.1" value="0"></div>
+    <div><label>Status</label><select id="published"><option value="true">Published / tampil</option><option value="false">Draft / sembunyikan</option></select></div>
+  </div>
+  <div class="actions">
+    <button class="btn" onclick="saveMod()">💾 Simpan</button>
+    <button class="btn secondary" onclick="resetForm()">Batal / Baru</button>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>📦 Kelola Katalog</h2>
+  <div class="toolbar">
+    <input id="adminSearch" placeholder="Cari mod..." oninput="loadMods()">
+    <button class="btn secondary" onclick="loadMods()">↻ Refresh</button>
+  </div>
+  <div id="listStatus" class="status">Memuat...</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Nama</th><th>Kategori</th><th>Versi</th><th>Download</th><th>Status</th><th>Aksi</th></tr></thead>
+    <tbody id="tbody"></tbody>
+  </table></div>
+</section>
+</main>
+</div>
+
+<script>
+const SUPABASE_URL="https://sebfhiojbwqefzhupgxa.supabase.co";
+const SUPABASE_KEY="sb_publishable_N9dcOzFhqqsr4CuoAhRCoQ_y1JIbaC9";
+const $=id=>document.getElementById(id);
+let editingId=null;
+let mods=[];
+
+function headers(extra={}){return{
+  "apikey":SUPABASE_KEY,
+  "Authorization":`Bearer ${SUPABASE_KEY}`,
+  "Content-Type":"application/json",
+  ...extra
+}}
+
+function msg(el,text,type=""){el.className="status "+type;el.textContent=text}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+
+async function session(){
+  const token=localStorage.getItem("zann_admin_access_token");
+  if(!token){showLogin();return}
+  const res=await fetch(`${SUPABASE_URL}/auth/v1/user`,{headers:headers({"Authorization":`Bearer ${token}`})});
+  if(!res.ok){localStorage.removeItem("zann_admin_access_token");showLogin();return}
+  showAdmin();loadMods();
+}
+
+function showLogin(){$("loginPanel").classList.remove("hiddenEl");$("adminPanel").classList.add("hiddenEl");$("logout").classList.add("hiddenEl")}
+function showAdmin(){$("loginPanel").classList.add("hiddenEl");$("adminPanel").classList.remove("hiddenEl");$("logout").classList.remove("hiddenEl")}
+
+async function login(){
+  const email=$("email").value.trim(),password=$("password").value;
+  if(!email||!password){msg($("loginStatus"),"Isi email dan password.","err");return}
+  msg($("loginStatus"),"⏳ Memproses...");
+  try{
+    const res=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`,{
+      method:"POST",headers:headers(),body:JSON.stringify({email,password})
+    });
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.msg||data.error_description||"Login gagal");
+    localStorage.setItem("zann_admin_access_token",data.access_token);
+    showAdmin();loadMods();
+  }catch(e){msg($("loginStatus"),"❌ "+e.message,"err")}
+}
+
+async function logout(){
+  const token=localStorage.getItem("zann_admin_access_token");
+  if(token)await fetch(`${SUPABASE_URL}/auth/v1/logout`,{method:"POST",headers:headers({"Authorization":`Bearer ${token}`})}).catch(()=>{});
+  localStorage.removeItem("zann_admin_access_token");editingId=null;showLogin();
+}
+
+function getForm(){
+  return{
+    slug:$("slug").value.trim(),
+    name:$("name").value.trim(),
+    category:$("category").value,
+    minecraft_version:$("version").value.trim(),
+    description:$("description").value.trim(),
+    image_url:$("image").value.trim(),
+    download_url:$("download").value.trim(),
+    downloads:Math.max(0,Number($("downloads").value||0)),
+    rating:Math.min(5,Math.max(0,Number($("rating").value||0))),
+    published:$("published").value==="true"
+  }
+}
+
+async function saveMod(){
+  const token=localStorage.getItem("zann_admin_access_token");
+  const body=getForm();
+  if(!body.name||!body.slug||!body.minecraft_version){msg($("status"),"❌ Nama, slug, dan versi wajib diisi.","err");return}
+  msg($("status"),"⏳ Menyimpan...");
+  try{
+    let url=`${SUPABASE_URL}/rest/v1/mods`;
+    let options={method:"POST",headers:headers({"Authorization":`Bearer ${token}`}),body:JSON.stringify(body)};
+    if(editingId){
+      url+=`?id=eq.${encodeURIComponent(editingId)}`;
+      options.method="PATCH";
+      options.headers["Prefer"]="return=representation";
+    }else{
+      options.headers["Prefer"]="return=representation";
+    }
+    const res=await fetch(url,options);
+    const data=await res.json().catch(()=>[]);
+    if(!res.ok)throw new Error(data.message||data.details||data.hint||JSON.stringify(data));
+    msg($("status"),editingId?"✅ Mod diperbarui.":"✅ Mod ditambahkan.","ok");
+    resetForm();loadMods();
+  }catch(e){msg($("status"),"❌ "+e.message,"err")}
+}
+
+function editMod(id){
+  const m=mods.find(x=>String(x.id)===String(id));if(!m)return;
+  editingId=m.id;$("formTitle").textContent="✏️ Edit Mod";
+  $("name").value=m.name||"";$("slug").value=m.slug||"";$("category").value=m.category||"Addon";
+  $("version").value=m.minecraft_version||"";$("description").value=m.description||"";
+  $("image").value=m.image_url||"";$("download").value=m.download_url||"";
+  $("downloads").value=m.downloads||0;$("rating").value=m.rating||0;$("published").value=String(m.published);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function resetForm(){
+  editingId=null;$("formTitle").textContent="➕ Tambah Mod";
+  ["name","slug","version","description","image","download"].forEach(id=>$(id).value="");
+  $("downloads").value=0;$("rating").value=0;$("published").value="true";$("category").value="Addon";
+}
+
+async function deleteMod(id){
+  if(!confirm("Hapus mod ini? Tindakan ini tidak bisa dibatalkan."))return;
+  const token=localStorage.getItem("zann_admin_access_token");
+  try{
+    const res=await fetch(`${SUPABASE_URL}/rest/v1/mods?id=eq.${encodeURIComponent(id)}`,{
+      method:"DELETE",headers:headers({"Authorization":`Bearer ${token}`})
+    });
+    if(!res.ok)throw new Error(await res.text());
+    loadMods();
+  }catch(e){alert("Gagal menghapus: "+e.message)}
+}
+
+async function loadMods(){
+  const token=localStorage.getItem("zann_admin_access_token");if(!token)return;
+  const q=$("adminSearch").value.trim();
+  let url=`${SUPABASE_URL}/rest/v1/mods?select=*&order=created_at.desc&limit=100`;
+  if(q)url+=`&or=(name.ilike.*${encodeURIComponent(q)}*,slug.ilike.*${encodeURIComponent(q)}*)`;
+  msg($("listStatus"),"⏳ Memuat...");
+  try{
+    const res=await fetch(url,{headers:headers({"Authorization":`Bearer ${token}`})});
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.message||JSON.stringify(data));
+    mods=data;$("tbody").innerHTML=data.map(m=>`
+      <tr>
+        <td><b>${esc(m.name)}</b><br><small>${esc(m.slug)}</small></td>
+        <td><span class="pill">${esc(m.category)}</span></td>
+        <td>${esc(m.minecraft_version)}</td>
+        <td>${Number(m.downloads||0).toLocaleString("id-ID")}</td>
+        <td class="${m.published?"published":"hidden"}">${m.published?"● Published":"● Draft"}</td>
+        <td><button class="rowbtn" onclick="editMod('${esc(m.id)}')">Edit</button><button class="rowbtn del" onclick="deleteMod('${esc(m.id)}')">Hapus</button></td>
+      </tr>`).join("");
+    msg($("listStatus"),`✅ ${data.length} mod dimuat.`,"ok");
+  }catch(e){msg($("listStatus"),"❌ "+e.message,"err")}
+}
+
+session();
+</script>
+</body>
+</html>
